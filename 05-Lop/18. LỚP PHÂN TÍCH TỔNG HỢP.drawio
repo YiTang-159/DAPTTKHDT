@@ -1,0 +1,55 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Trang-1" id="Gfv1UnYddpeEZBWFJUSW">
+    <mxGraphModel dx="2267" dy="1054" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="1600" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="ctrl" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;collapsible=0;" value="AppointmentController&#xa;---&#xa;bookAppointment()&#xa;cancelAppointment()&#xa;rescheduleAppointment()" vertex="1">
+          <mxGeometry height="150" width="260" x="40" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="svc" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;collapsible=0;" value="AppointmentService&#xa;---&#xa;validateBooking()&#xa;bookAppointment()&#xa;checkPatientConflict()" vertex="1">
+          <mxGeometry height="150" width="260" x="400" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="repo" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;collapsible=0;" value="AppointmentRepository&#xa;---&#xa;findById()&#xa;save()&#xa;findActiveBySlot()" vertex="1">
+          <mxGeometry height="150" width="260" x="760" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="auth" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;collapsible=0;" value="AuthorizationService&#xa;---&#xa;hasPermission()&#xa;canAccessRecord()" vertex="1">
+          <mxGeometry height="120" width="260" x="40" y="260" as="geometry" />
+        </mxCell>
+        <mxCell id="audit" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;collapsible=0;" value="AuditService&#xa;---&#xa;recordAccess()&#xa;recordChange()" vertex="1">
+          <mxGeometry height="120" width="260" x="400" y="260" as="geometry" />
+        </mxCell>
+        <mxCell id="notify" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;collapsible=0;" value="NotificationService&#xa;---&#xa;enqueue()&#xa;sendPending()&#xa;retryFailed()" vertex="1">
+          <mxGeometry height="130" width="260" x="760" y="260" as="geometry" />
+        </mxCell>
+        <mxCell id="pay" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;collapsible=0;" value="PaymentService&#xa;---&#xa;createPayment()&#xa;handleCallback()&#xa;reconcilePayment()" vertex="1">
+          <mxGeometry height="140" width="260" x="40" y="450" as="geometry" />
+        </mxCell>
+        <mxCell id="lab" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;collapsible=0;" value="LabService&#xa;---&#xa;createOrder()&#xa;recordResult()&#xa;confirmResult()" vertex="1">
+          <mxGeometry height="140" width="260" x="400" y="450" as="geometry" />
+        </mxCell>
+        <mxCell id="r1" edge="1" parent="1" source="ctrl" style="endArrow=open;html=1;" target="svc">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r2" edge="1" parent="1" source="svc" style="endArrow=open;html=1;" target="repo">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r3" edge="1" parent="1" source="svc" style="endArrow=open;html=1;" target="auth">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r4" edge="1" parent="1" source="svc" style="endArrow=open;html=1;" target="audit">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r5" edge="1" parent="1" source="svc" style="endArrow=open;html=1;" target="notify">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r6" edge="1" parent="1" source="pay" style="endArrow=open;html=1;" target="audit">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r7" edge="1" parent="1" source="lab" style="endArrow=open;html=1;" target="audit">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

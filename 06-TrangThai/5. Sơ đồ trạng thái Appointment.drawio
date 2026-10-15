@@ -1,0 +1,61 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Trang-1" id="Gfv1UnYddpeEZBWFJUSW">
+    <mxGraphModel dx="1316" dy="612" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="1600" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="start" parent="1" style="ellipse;fillColor=#000000;" value="" vertex="1">
+          <mxGeometry height="30" width="30" x="10" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="ordered" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="ORDERED" vertex="1">
+          <mxGeometry height="70" width="140" x="50" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="sample" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="SAMPLE_COLLECTED" vertex="1">
+          <mxGeometry height="70" width="180" x="340" y="10" as="geometry" />
+        </mxCell>
+        <mxCell id="progress" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="IN_PROGRESS" vertex="1">
+          <mxGeometry height="70" width="160" x="570" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="result" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="RESULT_AVAILABLE" vertex="1">
+          <mxGeometry height="70" width="180" x="790" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="reviewed" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="REVIEWED" vertex="1">
+          <mxGeometry height="70" width="180" x="790" y="205" as="geometry" />
+        </mxCell>
+        <mxCell id="cancelled" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="CANCELLED" vertex="1">
+          <mxGeometry height="70" width="140" x="130" y="260" as="geometry" />
+        </mxCell>
+        <mxCell id="end" parent="1" style="ellipse;fillColor=#000000;strokeWidth=3;" value="" vertex="1">
+          <mxGeometry height="30" width="30" x="1060" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="t1" edge="1" parent="1" source="start" style="html=1;" target="ordered" value="Bác sĩ chỉ định">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="t2" edge="1" parent="1" source="ordered" style="html=1;" target="sample" value="Lấy mẫu">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="t3" edge="1" parent="1" source="sample" style="html=1;" target="progress" value="Bắt đầu thực hiện">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="t4" edge="1" parent="1" source="progress" style="html=1;" target="result" value="Xác nhận kết quả">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="t5" edge="1" parent="1" source="result" style="html=1;" target="reviewed" value="Bác sĩ đã xem">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="t6" edge="1" parent="1" source="ordered" style="edgeStyle=orthogonalEdgeStyle;html=1;" target="cancelled" value="Hủy chỉ định">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="t7" edge="1" parent="1" source="progress" style="edgeStyle=orthogonalEdgeStyle;html=1;" target="cancelled" value="Hủy có lý do">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="t8" edge="1" parent="1" source="reviewed" style="html=1;" target="end">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="t9" edge="1" parent="1" source="cancelled" style="edgeStyle=orthogonalEdgeStyle;html=1;" target="end">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

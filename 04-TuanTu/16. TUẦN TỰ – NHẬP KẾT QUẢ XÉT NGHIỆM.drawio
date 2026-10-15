@@ -1,0 +1,32 @@
+<mxfile host="app.diagrams.net">
+  <diagram id="sd04" name="SD04 - Nhap ket qua xet nghiem">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" page="1" pageWidth="1250" pageHeight="900">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="l" value="KTV xét nghiệm" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;collapsible=0;size=40;fontSize=11;participant=umlActor;" vertex="1" parent="1"><mxGeometry x="80" y="40" width="40" height="680" as="geometry"/></mxCell>
+        <mxCell id="ui" value="LabUI" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;collapsible=0;size=40;fontSize=11;" vertex="1" parent="1"><mxGeometry x="190" y="40" width="130" height="680" as="geometry"/></mxCell>
+        <mxCell id="ctrl" value="LabController" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;collapsible=0;size=40;fontSize=11;" vertex="1" parent="1"><mxGeometry x="360" y="40" width="170" height="680" as="geometry"/></mxCell>
+        <mxCell id="order" value="LabOrder" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;collapsible=0;size=40;fontSize=11;" vertex="1" parent="1"><mxGeometry x="620" y="40" width="130" height="680" as="geometry"/></mxCell>
+        <mxCell id="result" value="LabResult" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;collapsible=0;size=40;fontSize=11;" vertex="1" parent="1"><mxGeometry x="810" y="40" width="130" height="680" as="geometry"/></mxCell>
+        <mxCell id="doc" value="Bác sĩ" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;collapsible=0;size=40;fontSize=11;participant=umlActor;" vertex="1" parent="1"><mxGeometry x="1000" y="40" width="40" height="680" as="geometry"/></mxCell>
+        <mxCell id="alt" value="alt" style="shape=umlFrame;whiteSpace=wrap;html=1;width=50;height=25;fillColor=none;" vertex="1" parent="1"><mxGeometry x="60" y="260" width="1000" height="400" as="geometry"/></mxCell>
+        <mxCell id="g1" value="[Hợp lệ]" style="text;html=1;align=left;verticalAlign=middle;" vertex="1" parent="1"><mxGeometry x="120" y="262" width="200" height="24" as="geometry"/></mxCell>
+        <mxCell id="g2" value="[Không hợp lệ]" style="text;html=1;align=left;verticalAlign=middle;" vertex="1" parent="1"><mxGeometry x="70" y="534" width="200" height="24" as="geometry"/></mxCell>
+        <mxCell id="div" value="" style="endArrow=none;dashed=1;html=1;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="60" y="530" as="sourcePoint"/><mxPoint x="1060" y="530" as="targetPoint"/></mxGeometry></mxCell>
+        <mxCell id="m1" value="1: nhapKetQua(labOrderId, value, unit)" style="html=1;verticalAlign=bottom;fontSize=11;endArrow=block;endFill=1;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="100" y="120" as="sourcePoint"/><mxPoint x="255" y="120" as="targetPoint"/></mxGeometry></mxCell>
+        <mxCell id="m2" value="2: recordResult(labOrderId, value, unit)" style="html=1;verticalAlign=bottom;fontSize=11;endArrow=block;endFill=1;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="255" y="155" as="sourcePoint"/><mxPoint x="445" y="155" as="targetPoint"/></mxGeometry></mxCell>
+        <mxCell id="m3" value="3: canRecordResult(userId)" style="html=1;verticalAlign=bottom;fontSize=11;endArrow=block;endFill=1;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="445" y="190" as="sourcePoint"/><mxPoint x="685" y="190" as="targetPoint"/></mxGeometry></mxCell>
+        <mxCell id="m4" value="4: true / false" style="html=1;verticalAlign=bottom;fontSize=11;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="685" y="225" as="sourcePoint"/><mxPoint x="445" y="225" as="targetPoint"/></mxGeometry></mxCell>
+        <mxCell id="m5" value="5: createLabResult(labOrderId, value, unit)" style="html=1;verticalAlign=bottom;fontSize=11;endArrow=block;endFill=1;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="445" y="310" as="sourcePoint"/><mxPoint x="875" y="310" as="targetPoint"/></mxGeometry></mxCell>
+        <mxCell id="m6" value="6: resultId" style="html=1;verticalAlign=bottom;fontSize=11;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="875" y="345" as="sourcePoint"/><mxPoint x="445" y="345" as="targetPoint"/></mxGeometry></mxCell>
+        <mxCell id="m7" value="7: updateStatus(RESULT_AVAILABLE)" style="html=1;verticalAlign=bottom;fontSize=11;endArrow=block;endFill=1;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="445" y="385" as="sourcePoint"/><mxPoint x="685" y="385" as="targetPoint"/></mxGeometry></mxCell>
+        <mxCell id="m8" value="8: notifyDoctor(labOrderId)" style="html=1;verticalAlign=bottom;fontSize=11;endArrow=block;endFill=1;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="685" y="425" as="sourcePoint"/><mxPoint x="1020" y="425" as="targetPoint"/></mxGeometry></mxCell>
+        <mxCell id="m9" value="9: saved" style="html=1;verticalAlign=bottom;fontSize=11;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="445" y="465" as="sourcePoint"/><mxPoint x="255" y="465" as="targetPoint"/></mxGeometry></mxCell>
+        <mxCell id="m10" value="10: hiển thị đã lưu kết quả" style="html=1;verticalAlign=bottom;fontSize=11;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="255" y="500" as="sourcePoint"/><mxPoint x="100" y="500" as="targetPoint"/></mxGeometry></mxCell>
+        <mxCell id="m11" value="11: error (không đủ quyền / sai trạng thái)" style="html=1;verticalAlign=bottom;fontSize=11;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="445" y="585" as="sourcePoint"/><mxPoint x="255" y="585" as="targetPoint"/></mxGeometry></mxCell>
+        <mxCell id="m12" value="12: báo lỗi, không lưu kết quả" style="html=1;verticalAlign=bottom;fontSize=11;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="255" y="620" as="sourcePoint"/><mxPoint x="100" y="620" as="targetPoint"/></mxGeometry></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

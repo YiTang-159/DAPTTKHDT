@@ -1,0 +1,82 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Trang-1" id="Gfv1UnYddpeEZBWFJUSW">
+    <mxGraphModel dx="3467" dy="1054" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="1600" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="Patient" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;collapsible=0;" value="Patient&#xa;---&#xa;patientId: UUID&#xa;fullName: String&#xa;dob: Date&#xa;phone: String&#xa;email: String" vertex="1">
+          <mxGeometry height="150" width="220" x="40" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Appointment" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;collapsible=0;" value="Appointment&#xa;---&#xa;appointmentId: UUID&#xa;status: String&#xa;reason: String&#xa;createdAt: DateTime" vertex="1">
+          <mxGeometry height="150" width="230" x="360" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="TimeSlot" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;collapsible=0;" value="TimeSlot&#xa;---&#xa;slotId: UUID&#xa;startAt: DateTime&#xa;endAt: DateTime&#xa;status: String" vertex="1">
+          <mxGeometry height="150" width="210" x="690" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Doctor" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;collapsible=0;" value="Doctor&#xa;---&#xa;doctorId: UUID&#xa;fullName: String&#xa;licenseNo: String" vertex="1">
+          <mxGeometry height="120" width="210" x="690" y="260" as="geometry" />
+        </mxCell>
+        <mxCell id="Visit" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;collapsible=0;" value="Visit&#xa;---&#xa;visitId: UUID&#xa;status: String&#xa;symptoms: String&#xa;startedAt: DateTime&#xa;completedAt: DateTime" vertex="1">
+          <mxGeometry height="170" width="230" x="360" y="260" as="geometry" />
+        </mxCell>
+        <mxCell id="MedicalRecord" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;collapsible=0;" value="MedicalRecord&#xa;---&#xa;recordId: UUID&#xa;createdAt: DateTime&#xa;status: String" vertex="1">
+          <mxGeometry height="130" width="220" x="40" y="260" as="geometry" />
+        </mxCell>
+        <mxCell id="LabOrder" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;collapsible=0;" value="LabOrder&#xa;---&#xa;labOrderId: UUID&#xa;status: String&#xa;requestedAt: DateTime" vertex="1">
+          <mxGeometry height="130" width="220" x="40" y="460" as="geometry" />
+        </mxCell>
+        <mxCell id="LabResult" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;collapsible=0;" value="LabResult&#xa;---&#xa;resultId: UUID&#xa;value: String&#xa;unit: String&#xa;resultAt: DateTime" vertex="1">
+          <mxGeometry height="140" width="230" x="-260" y="540" as="geometry" />
+        </mxCell>
+        <mxCell id="Prescription" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;collapsible=0;" value="Prescription&#xa;---&#xa;prescriptionId: UUID&#xa;issuedAt: DateTime&#xa;status: String" vertex="1">
+          <mxGeometry height="130" width="210" x="690" y="460" as="geometry" />
+        </mxCell>
+        <mxCell id="PrescriptionItem" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;collapsible=0;" value="PrescriptionItem&#xa;---&#xa;itemId: UUID&#xa;dosage: String&#xa;quantity: Integer&#xa;instruction: String" vertex="1">
+          <mxGeometry height="150" width="210" x="690" y="660" as="geometry" />
+        </mxCell>
+        <mxCell id="Invoice" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;collapsible=0;" value="Invoice&#xa;---&#xa;invoiceId: UUID&#xa;totalAmount: Decimal&#xa;paidAmount: Decimal&#xa;status: String" vertex="1">
+          <mxGeometry height="150" width="230" x="360" y="720" as="geometry" />
+        </mxCell>
+        <mxCell id="Payment" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;collapsible=0;" value="Payment&#xa;---&#xa;paymentId: UUID&#xa;method: String&#xa;amount: Decimal&#xa;status: String&#xa;transactionRef: String" vertex="1">
+          <mxGeometry height="170" width="220" x="40" y="720" as="geometry" />
+        </mxCell>
+        <mxCell id="r1" edge="1" parent="1" source="Patient" style="endArrow=none;html=1;" target="Appointment" value="1        0..*">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r2" edge="1" parent="1" source="Doctor" style="endArrow=none;html=1;" target="TimeSlot" value="1        0..*">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r3" edge="1" parent="1" source="TimeSlot" style="endArrow=none;html=1;" target="Appointment" value="1        0..*">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r4" edge="1" parent="1" source="Appointment" style="endArrow=none;html=1;" target="Visit" value="0..1      0..1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r5" edge="1" parent="1" source="Patient" style="endArrow=none;html=1;" target="Visit" value="1        0..*">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r6" edge="1" parent="1" source="MedicalRecord" style="endArrow=none;html=1;" target="Visit" value="1        0..*">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r7" edge="1" parent="1" source="Visit" style="endArrow=none;html=1;" target="LabOrder" value="1        0..*">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r8" edge="1" parent="1" source="LabOrder" style="endArrow=none;html=1;" target="LabResult" value="1        0..*">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r9" edge="1" parent="1" source="Visit" style="endArrow=none;html=1;" target="Prescription" value="1        0..*">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r10" edge="1" parent="1" source="Prescription" style="endArrow=none;startArrow=diamondThin;startFill=1;html=1;" target="PrescriptionItem" value="1        1..*&#xa;composition">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r11" edge="1" parent="1" source="Visit" style="endArrow=none;html=1;" target="Invoice" value="0..1      0..1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r12" edge="1" parent="1" source="Invoice" style="endArrow=none;html=1;" target="Payment" value="1        0..*">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

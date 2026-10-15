@@ -1,0 +1,85 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Trang-1" id="Gfv1UnYddpeEZBWFJUSW">
+    <mxGraphModel dx="2267" dy="1054" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="1600" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="web" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Web bệnh nhân / nhân viên" vertex="1">
+          <mxGeometry height="70" width="240" x="40" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="api" parent="1" style="shape=component;whiteSpace=wrap;html=1;" value="API Gateway và xác thực" vertex="1">
+          <mxGeometry height="80" width="240" x="40" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="auth" parent="1" style="shape=component;whiteSpace=wrap;html=1;" value="Xác thực và phân quyền RBAC" vertex="1">
+          <mxGeometry height="80" width="240" x="360" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="appointment" parent="1" style="shape=component;whiteSpace=wrap;html=1;" value="Quản lý lịch hẹn" vertex="1">
+          <mxGeometry height="80" width="240" x="360" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="record" parent="1" style="shape=component;whiteSpace=wrap;html=1;" value="Hồ sơ bệnh án và khám" vertex="1">
+          <mxGeometry height="80" width="240" x="680" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="lab" parent="1" style="shape=component;whiteSpace=wrap;html=1;" value="Xét nghiệm" vertex="1">
+          <mxGeometry height="80" width="240" x="680" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="payment" parent="1" style="shape=component;whiteSpace=wrap;html=1;" value="Thanh toán" vertex="1">
+          <mxGeometry height="80" width="240" x="360" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="notify" parent="1" style="shape=component;whiteSpace=wrap;html=1;" value="Thông báo" vertex="1">
+          <mxGeometry height="80" width="240" x="680" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="db" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" value="Cơ sở dữ liệu quan hệ" vertex="1">
+          <mxGeometry height="90" width="240" x="360" y="450" as="geometry" />
+        </mxCell>
+        <mxCell id="sms" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Dịch vụ SMS/email" vertex="1">
+          <mxGeometry height="70" width="240" x="680" y="450" as="geometry" />
+        </mxCell>
+        <mxCell id="gateway" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Cổng thanh toán" vertex="1">
+          <mxGeometry height="70" width="240" x="40" y="450" as="geometry" />
+        </mxCell>
+        <mxCell id="r1" edge="1" parent="1" source="web" style="endArrow=open;html=1;" target="api">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r2" edge="1" parent="1" source="api" style="endArrow=open;html=1;" target="auth">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r3" edge="1" parent="1" source="api" style="endArrow=open;html=1;" target="appointment">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r4" edge="1" parent="1" source="api" style="endArrow=open;html=1;" target="record">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r5" edge="1" parent="1" source="api" style="endArrow=open;html=1;" target="lab">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r6" edge="1" parent="1" source="api" style="endArrow=open;html=1;" target="payment">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r7" edge="1" parent="1" source="appointment" style="endArrow=open;html=1;" target="notify">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r8" edge="1" parent="1" source="record" style="endArrow=open;html=1;" target="lab">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r9" edge="1" parent="1" source="appointment" style="endArrow=open;html=1;" target="db">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r10" edge="1" parent="1" source="record" style="endArrow=open;html=1;" target="db">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r11" edge="1" parent="1" source="lab" style="endArrow=open;html=1;" target="db">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r12" edge="1" parent="1" source="payment" style="endArrow=open;html=1;" target="db">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r13" edge="1" parent="1" source="notify" style="endArrow=open;html=1;" target="sms">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r14" edge="1" parent="1" source="payment" style="endArrow=open;html=1;" target="gateway">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

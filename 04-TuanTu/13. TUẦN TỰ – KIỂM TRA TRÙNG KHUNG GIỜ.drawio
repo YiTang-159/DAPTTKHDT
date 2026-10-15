@@ -1,0 +1,128 @@
+<mxfile host="app.diagrams.net">
+  <diagram id="sd01" name="SD01 - Kiem tra trung khung gio">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" page="1" pageWidth="1250" pageHeight="900">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- Lifelines -->
+        <mxCell id="p" value="Bệnh nhân" style="shape=umlLifeline;perimeter=lifelinePerimeter;participant=umlActor;size=40;whiteSpace=wrap;html=1;verticalAlign=top;labelPosition=center;verticalLabelPosition=bottom;align=center;" vertex="1" parent="1">
+          <mxGeometry x="100" y="40" width="40" height="720" as="geometry"/>
+        </mxCell>
+        <mxCell id="ui" value="AppointmentUI" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;collapsible=0;size=40;" vertex="1" parent="1">
+          <mxGeometry x="260" y="40" width="140" height="720" as="geometry"/>
+        </mxCell>
+        <mxCell id="ctrl" value="AppointmentController" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;collapsible=0;size=40;" vertex="1" parent="1">
+          <mxGeometry x="480" y="40" width="180" height="720" as="geometry"/>
+        </mxCell>
+        <mxCell id="ts" value="TimeSlot" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;collapsible=0;size=40;" vertex="1" parent="1">
+          <mxGeometry x="740" y="40" width="140" height="720" as="geometry"/>
+        </mxCell>
+        <mxCell id="db" value="Database" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;collapsible=0;size=40;" vertex="1" parent="1">
+          <mxGeometry x="960" y="40" width="140" height="720" as="geometry"/>
+        </mxCell>
+
+        <!-- Khung alt (2 ngăn) -->
+        <mxCell id="alt" value="alt" style="shape=umlFrame;whiteSpace=wrap;html=1;width=50;height=25;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="70" y="350" width="1060" height="360" as="geometry"/>
+        </mxCell>
+        <mxCell id="g1" value="[Còn trống]" style="text;html=1;align=left;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="130" y="352" width="120" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="g2" value="[Đã bị đặt]" style="text;html=1;align=left;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="80" y="584" width="120" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="div" value="" style="endArrow=none;dashed=1;html=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="70" y="580" as="sourcePoint"/>
+            <mxPoint x="1130" y="580" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Phần trước khung alt -->
+        <mxCell id="m1" value="1: chonKhungGio(slotId)" style="html=1;verticalAlign=bottom;endArrow=block;endFill=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="120" y="130" as="sourcePoint"/>
+            <mxPoint x="330" y="130" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m2" value="2: bookAppointment(patientId, slotId, reason)" style="html=1;verticalAlign=bottom;endArrow=block;endFill=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="330" y="170" as="sourcePoint"/>
+            <mxPoint x="570" y="170" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m3" value="3: checkSlotAvailable(slotId)" style="html=1;verticalAlign=bottom;endArrow=block;endFill=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="570" y="210" as="sourcePoint"/>
+            <mxPoint x="810" y="210" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m4" value="4: findSlotById(slotId)" style="html=1;verticalAlign=bottom;endArrow=block;endFill=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="810" y="250" as="sourcePoint"/>
+            <mxPoint x="1030" y="250" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m5" value="5: slot" style="html=1;verticalAlign=bottom;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1030" y="285" as="sourcePoint"/>
+            <mxPoint x="810" y="285" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m6" value="6: isAvailable" style="html=1;verticalAlign=bottom;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="810" y="320" as="sourcePoint"/>
+            <mxPoint x="570" y="320" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Nhánh [Còn trống] -->
+        <mxCell id="m7" value="7: lockSlot(slotId)" style="html=1;verticalAlign=bottom;endArrow=block;endFill=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="570" y="410" as="sourcePoint"/>
+            <mxPoint x="810" y="410" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m8" value="8: updateAvailability(slotId, false)" style="html=1;verticalAlign=bottom;endArrow=block;endFill=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="810" y="445" as="sourcePoint"/>
+            <mxPoint x="1030" y="445" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m9" value="9: createAppointment(patientId, slotId, reason)" style="html=1;verticalAlign=bottom;endArrow=block;endFill=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="570" y="485" as="sourcePoint"/>
+            <mxPoint x="1030" y="485" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m10" value="10: appointmentId" style="html=1;verticalAlign=bottom;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="570" y="525" as="sourcePoint"/>
+            <mxPoint x="330" y="525" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m11" value="11: hiển thị xác nhận đặt lịch" style="html=1;verticalAlign=bottom;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="330" y="560" as="sourcePoint"/>
+            <mxPoint x="120" y="560" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Nhánh [Đã bị đặt] -->
+        <mxCell id="m12" value="12: SlotUnavailable" style="html=1;verticalAlign=bottom;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="570" y="640" as="sourcePoint"/>
+            <mxPoint x="330" y="640" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m13" value="13: báo giờ đã có người đặt, mời chọn lại" style="html=1;verticalAlign=bottom;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="330" y="680" as="sourcePoint"/>
+            <mxPoint x="120" y="680" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

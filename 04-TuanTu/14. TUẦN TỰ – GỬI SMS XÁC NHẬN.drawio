@@ -1,0 +1,133 @@
+<mxfile host="app.diagrams.net">
+  <diagram id="seq-sms" name="SD02 - Gui SMS xac nhan">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" page="1" pageWidth="1250" pageHeight="900">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- Lifelines -->
+        <mxCell id="ctrl" value="AppointmentController" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;collapsible=0;size=40;" vertex="1" parent="1">
+          <mxGeometry x="100" y="40" width="200" height="760" as="geometry"/>
+        </mxCell>
+        <mxCell id="svc" value="NotificationService" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;collapsible=0;size=40;" vertex="1" parent="1">
+          <mxGeometry x="400" y="40" width="190" height="760" as="geometry"/>
+        </mxCell>
+        <mxCell id="db" value="Database" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;collapsible=0;size=40;" vertex="1" parent="1">
+          <mxGeometry x="690" y="40" width="140" height="760" as="geometry"/>
+        </mxCell>
+        <mxCell id="sms" value="Dịch vụ SMS" style="shape=umlLifeline;perimeter=lifelinePerimeter;participant=umlActor;whiteSpace=wrap;html=1;container=0;collapsible=0;size=40;" vertex="1" parent="1">
+          <mxGeometry x="920" y="40" width="40" height="760" as="geometry"/>
+        </mxCell>
+
+        <!-- Khung alt (2 ngăn) -->
+        <mxCell id="alt" value="alt" style="shape=umlFrame;whiteSpace=wrap;html=1;width=50;height=25;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="70" y="340" width="960" height="420" as="geometry"/>
+        </mxCell>
+        <mxCell id="g1" value="[Gửi thành công]" style="text;html=1;align=left;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="130" y="342" width="150" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="g2" value="[Lỗi tạm thời]" style="text;html=1;align=left;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="80" y="534" width="150" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="div" value="" style="endArrow=none;dashed=1;html=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="70" y="530" as="sourcePoint"/>
+            <mxPoint x="1030" y="530" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Trước khung alt -->
+        <mxCell id="m1" value="1: sendConfirmation(appointmentId)" style="html=1;verticalAlign=bottom;endArrow=block;endFill=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="200" y="120" as="sourcePoint"/>
+            <mxPoint x="495" y="120" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m2" value="2: findAppointmentById(appointmentId)" style="html=1;verticalAlign=bottom;endArrow=block;endFill=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="495" y="160" as="sourcePoint"/>
+            <mxPoint x="760" y="160" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m3" value="3: appointment, phone/email" style="html=1;verticalAlign=bottom;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="760" y="195" as="sourcePoint"/>
+            <mxPoint x="495" y="195" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m4" value="" style="html=1;endArrow=block;endFill=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="495" y="235" as="sourcePoint"/>
+            <mxPoint x="495" y="265" as="targetPoint"/>
+            <Array as="points">
+              <mxPoint x="545" y="235"/>
+              <mxPoint x="545" y="265"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m4t" value="4: buildMessage(appointment) – nội dung không chứa dữ liệu nhạy cảm" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="555" y="228" width="400" height="44" as="geometry"/>
+        </mxCell>
+        <mxCell id="m5" value="5: send(message)" style="html=1;verticalAlign=bottom;endArrow=block;endFill=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="495" y="305" as="sourcePoint"/>
+            <mxPoint x="940" y="305" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Nhánh [Gửi thành công] -->
+        <mxCell id="m6" value="6: deliveryReceipt (OK)" style="html=1;verticalAlign=bottom;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="940" y="395" as="sourcePoint"/>
+            <mxPoint x="495" y="395" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m7" value="7: updateStatus(notificationId, SENT)" style="html=1;verticalAlign=bottom;endArrow=block;endFill=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="495" y="435" as="sourcePoint"/>
+            <mxPoint x="760" y="435" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m8" value="8: đã gửi" style="html=1;verticalAlign=bottom;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="495" y="480" as="sourcePoint"/>
+            <mxPoint x="200" y="480" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Nhánh [Lỗi tạm thời] -->
+        <mxCell id="m9" value="9: error (timeout / lỗi tạm thời)" style="html=1;verticalAlign=bottom;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="940" y="585" as="sourcePoint"/>
+            <mxPoint x="495" y="585" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m10" value="10: updateStatus(notificationId, RETRYING)" style="html=1;verticalAlign=bottom;endArrow=block;endFill=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="495" y="625" as="sourcePoint"/>
+            <mxPoint x="760" y="625" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m11" value="" style="html=1;endArrow=block;endFill=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="495" y="660" as="sourcePoint"/>
+            <mxPoint x="495" y="690" as="targetPoint"/>
+            <Array as="points">
+              <mxPoint x="545" y="660"/>
+              <mxPoint x="545" y="690"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m11t" value="11: scheduleRetry(notificationId) – đưa vào hàng đợi gửi lại" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="555" y="653" width="400" height="44" as="geometry"/>
+        </mxCell>
+        <mxCell id="m12" value="12: đã đưa vào hàng đợi (lịch vẫn được tạo)" style="html=1;verticalAlign=bottom;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="495" y="730" as="sourcePoint"/>
+            <mxPoint x="200" y="730" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
