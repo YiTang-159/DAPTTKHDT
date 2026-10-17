@@ -1,0 +1,55 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Trang-1" id="Gfv1UnYddpeEZBWFJUSW">
+    <mxGraphModel dx="2267" dy="1054" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="1600" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="client" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Thiết bị bệnh nhân / nhân viên" vertex="1">
+          <mxGeometry height="80" width="260" x="40" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="web" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Máy chủ web / Reverse Proxy" vertex="1">
+          <mxGeometry height="80" width="260" x="400" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="app" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Máy chủ ứng dụng" vertex="1">
+          <mxGeometry height="80" width="260" x="400" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="db" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" value="Máy chủ CSDL" vertex="1">
+          <mxGeometry height="100" width="220" x="760" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="backup" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Máy chủ sao lưu" vertex="1">
+          <mxGeometry height="70" width="220" x="760" y="360" as="geometry" />
+        </mxCell>
+        <mxCell id="worker" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Máy chủ tác vụ nền" vertex="1">
+          <mxGeometry height="70" width="260" x="200" y="350" as="geometry" />
+        </mxCell>
+        <mxCell id="sms" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Dịch vụ SMS/email" vertex="1">
+          <mxGeometry height="70" width="260" x="40" y="500" as="geometry" />
+        </mxCell>
+        <mxCell id="gateway" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Cổng thanh toán" vertex="1">
+          <mxGeometry height="70" width="260" x="400" y="500" as="geometry" />
+        </mxCell>
+        <mxCell id="r1" edge="1" parent="1" source="client" style="html=1;" target="web" value="HTTPS">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r2" edge="1" parent="1" source="web" style="html=1;" target="app" value="HTTP nội bộ">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r3" edge="1" parent="1" source="app" style="html=1;" target="db" value="TCP / TLS">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r4" edge="1" parent="1" source="db" style="html=1;" target="backup" value="Sao lưu định kỳ">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r5" edge="1" parent="1" source="app" style="html=1;" target="worker" value="Hàng đợi tác vụ">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r6" edge="1" parent="1" source="worker" style="html=1;" target="sms" value="HTTPS">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r7" edge="1" parent="1" source="app" style="html=1;" target="gateway" value="HTTPS">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
