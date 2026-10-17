@@ -1,0 +1,5 @@
+<!DOCTYPE html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>GD04 – Danh sách chờ khám</title><link rel="stylesheet" href="style.css"></head><body><script src="app.js"></script><script>
+layout(4,()=>`<h2>4. Danh sách chờ bác sĩ</h2><div class="card"><div class="tw"><table><tr><th>STT</th><th>Bệnh nhân</th><th>Giờ đến</th><th>Bác sĩ</th><th></th></tr>${s.q.map((id,i)=>{const a=s.ap.find(x=>x.id==id),d=a.st=='Hoàn thành';return `<tr><td>${i+1}</td><td>${PT.name}</td><td>${a.time}</td><td>${a.doc}</td><td><button class="pr" ${d?'disabled':''} onclick="startExam('${id}')">${d?'Đã khám':'Bắt đầu khám'}</button></td></tr>`}).join('')||'<tr><td colspan="5" class="mu">Chưa có bệnh nhân. Vào màn 3, xác nhận lịch rồi bấm Check-in.</td></tr>'}</table></div></div>`);
+function startExam(id){if(s.cur!=id){s.cur=id;s.labs=[];s.sym='';s.dx='';s.locked=false;s.rx=[];s.rxOk=false;s.paid=false;s.pst=''}log('Bắt đầu khám',id);nav(5)}
+
+</script></body></html>
