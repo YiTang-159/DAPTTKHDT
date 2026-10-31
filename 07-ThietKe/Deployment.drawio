@@ -1,44 +1,110 @@
-<mxfile host="app.diagrams.net">
-  <diagram name="Trang-1" id="Gfv1UnYddpeEZBWFJUSW">
-    <mxGraphModel dx="1093" dy="508" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="1600" math="0" shadow="0">
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" agent="ChatGPT" type="device" version="24.7.17">
+  <diagram id="deployment_clinic" name="Sơ đồ triển khai">
+    <mxGraphModel dx="1810" dy="1310" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1810" pageHeight="1310" math="0" shadow="0" background="#FFFFFF">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="p" parent="1" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" value=":Bệnh nhân" vertex="1">
-          <mxGeometry height="80" width="40" x="60" y="120" as="geometry" />
+        <mxCell id="title" value="SƠ ĐỒ TRIỂN KHAI – HỆ THỐNG PHÒNG KHÁM ĐA KHOA" style="text;html=0;whiteSpace=wrap;strokeColor=none;fillColor=none;fontColor=#000000;fontFamily=Arial;fontStyle=1;fontSize=30;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="68" y="22" width="1670" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="ui" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value=":AppointmentUI" vertex="1">
-          <mxGeometry height="70" width="160" x="280" y="120" as="geometry" />
+        <mxCell id="sub" value="Mô hình triển khai đề xuất (UML Deployment Diagram)" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=none;fontColor=#000000;fontFamily=Arial;fontSize=16;align=center;verticalAlign=middle;fontSize=19;" vertex="1" parent="1">
+          <mxGeometry x="88" y="78" width="1630" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="ctrl" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value=":AppointmentController" vertex="1">
-          <mxGeometry height="70" width="190" x="580" y="120" as="geometry" />
+        <mxCell id="patient_device" value="«device» THIẾT BỊ BỆNH NHÂN" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=2;fontColor=#000000;fontFamily=Arial;fontSize=20;fontStyle=1;verticalAlign=top;align=left;spacingLeft=18;spacingTop=15;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="100" y="156" width="500" height="175" as="geometry" />
         </mxCell>
-        <mxCell id="svc" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value=":AppointmentService" vertex="1">
-          <mxGeometry height="70" width="190" x="930" y="120" as="geometry" />
+        <mxCell id="patient_web" value="«artifact» Web / Mobile bệnh nhân&#10;Đặt, đổi, hủy lịch khám" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;fontColor=#000000;fontFamily=Arial;fontSize=17;align=center;verticalAlign=middle;spacing=8;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="135" y="234" width="430" height="72" as="geometry" />
         </mxCell>
-        <mxCell id="slot" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value=":TimeSlot" vertex="1">
-          <mxGeometry height="70" width="190" x="660" y="310" as="geometry" />
+        <mxCell id="staff_device" value="«device» MÁY TRẠM NHÂN VIÊN" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=2;fontColor=#000000;fontFamily=Arial;fontSize=20;fontStyle=1;verticalAlign=top;align=left;spacingLeft=18;spacingTop=15;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="740" y="156" width="500" height="175" as="geometry" />
         </mxCell>
-        <mxCell id="app" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value=":Appointment" vertex="1">
-          <mxGeometry height="70" width="190" x="980" y="310" as="geometry" />
+        <mxCell id="staff_browser" value="«artifact» Web nhân viên&#10;Lễ tân • Bác sĩ • Xét nghiệm • Thu ngân" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;fontColor=#000000;fontFamily=Arial;fontSize=17;align=center;verticalAlign=middle;spacing=8;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="775" y="234" width="430" height="72" as="geometry" />
         </mxCell>
-        <mxCell id="m1" edge="1" parent="1" source="p" style="html=1;" target="ui" value="1: bookAppointment()">
+        <mxCell id="web_node" value="«node» MÁY CHỦ WEB / REVERSE PROXY" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=2;fontColor=#000000;fontFamily=Arial;fontSize=20;fontStyle=1;verticalAlign=top;align=left;spacingLeft=18;spacingTop=15;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="455" y="421" width="610" height="178" as="geometry" />
+        </mxCell>
+        <mxCell id="proxy_artifact" value="«artifact» Web frontend + Reverse Proxy&#10;Tiếp nhận HTTPS, chuyển yêu cầu tới API" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;fontColor=#000000;fontFamily=Arial;fontSize=17;align=center;verticalAlign=middle;spacing=8;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="510" y="499" width="500" height="73" as="geometry" />
+        </mxCell>
+        <mxCell id="app_node" value="«node» MÁY CHỦ ỨNG DỤNG" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=2;fontColor=#000000;fontFamily=Arial;fontSize=20;fontStyle=1;verticalAlign=top;align=left;spacingLeft=18;spacingTop=15;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="455" y="716" width="610" height="262" as="geometry" />
+        </mxCell>
+        <mxCell id="app_environment" value="«executionEnvironment» API / Runtime" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;fontColor=#000000;fontFamily=Arial;fontSize=17;align=center;verticalAlign=middle;spacing=8;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="490" y="784" width="540" height="51" as="geometry" />
+        </mxCell>
+        <mxCell id="app_services" value="«artifact» Dịch vụ nghiệp vụ&#10;Đặt lịch • Bệnh án • Xét nghiệm • Kê đơn • Thanh toán" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;fontColor=#000000;fontFamily=Arial;fontSize=17;align=center;verticalAlign=middle;spacing=8;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="490" y="849" width="540" height="71" as="geometry" />
+        </mxCell>
+        <mxCell id="app_audit" value="RBAC • Nhật ký truy cập • Tác vụ gửi thông báo" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=none;fontColor=#000000;fontFamily=Arial;fontSize=16;align=center;verticalAlign=middle;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry x="480" y="933" width="565" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="db_node" value="«node» MÁY CHỦ CƠ SỞ DỮ LIỆU" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=2;fontColor=#000000;fontFamily=Arial;fontSize=20;fontStyle=1;verticalAlign=top;align=left;spacingLeft=18;spacingTop=15;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="110" y="1090" width="565" height="168" as="geometry" />
+        </mxCell>
+        <mxCell id="db_artifact" value="«artifact» Hệ QTCSDL quan hệ&#10;Lịch hẹn • Hồ sơ bệnh án • Audit logs" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;fontColor=#000000;fontFamily=Arial;fontSize=17;align=center;verticalAlign=middle;spacing=8;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="147" y="1160" width="485" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="backup_node" value="«node» MÁY CHỦ / KHO SAO LƯU" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=2;fontColor=#000000;fontFamily=Arial;fontSize=20;fontStyle=1;verticalAlign=top;align=left;spacingLeft=18;spacingTop=15;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="785" y="1090" width="565" height="168" as="geometry" />
+        </mxCell>
+        <mxCell id="backup_artifact" value="«artifact» Bản sao lưu mã hóa&#10;Phục hồi dữ liệu khi có sự cố" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;fontColor=#000000;fontFamily=Arial;fontSize=17;align=center;verticalAlign=middle;spacing=8;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="827" y="1160" width="475" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="sms_node" value="«external» DỊCH VỤ SMS / EMAIL" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=2;fontColor=#000000;fontFamily=Arial;fontSize=20;fontStyle=1;verticalAlign=top;align=left;spacingLeft=18;spacingTop=15;shadow=0;dashed=1;dashPattern=7 5;" vertex="1" parent="1">
+          <mxGeometry x="1365" y="708" width="373" height="128" as="geometry" />
+        </mxCell>
+        <mxCell id="sms_artifact" value="API gửi xác nhận / nhắc tái khám" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;fontColor=#000000;fontFamily=Arial;fontSize=17;align=center;verticalAlign=middle;spacing=8;shadow=0;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry x="1393" y="779" width="315" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="payment_node" value="«external» CỔNG THANH TOÁN" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=2;fontColor=#000000;fontFamily=Arial;fontSize=20;fontStyle=1;verticalAlign=top;align=left;spacingLeft=18;spacingTop=15;shadow=0;dashed=1;dashPattern=7 5;" vertex="1" parent="1">
+          <mxGeometry x="1365" y="915" width="373" height="128" as="geometry" />
+        </mxCell>
+        <mxCell id="payment_artifact" value="API thanh toán / phản hồi giao dịch" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;fontColor=#000000;fontFamily=Arial;fontSize=17;align=center;verticalAlign=middle;spacing=8;shadow=0;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry x="1393" y="986" width="315" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="patient_https" value="HTTPS / TLS" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=0;strokeColor=#000000;strokeWidth=2;endArrow=none;fontColor=#000000;fontFamily=Arial;fontSize=17;labelBackgroundColor=#FFFFFF;exitX=0.72;exitY=1;exitDx=0;exitDy=0;exitPerimeter=1;entryX=0.21;entryY=0;entryDx=0;entryDy=0;entryPerimeter=1;" edge="1" parent="1" source="patient_device" target="web_node">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="470" y="374" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="staff_https" value="HTTPS / TLS" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=0;strokeColor=#000000;strokeWidth=2;endArrow=none;fontColor=#000000;fontFamily=Arial;fontSize=17;labelBackgroundColor=#FFFFFF;exitX=0.27;exitY=1;exitDx=0;exitDy=0;exitPerimeter=1;entryX=0.78;entryY=0;entryDx=0;entryDy=0;entryPerimeter=1;" edge="1" parent="1" source="staff_device" target="web_node">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="985" y="374" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="proxy_api" value="HTTPS nội bộ" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=0;strokeColor=#000000;strokeWidth=2;endArrow=none;fontColor=#000000;fontFamily=Arial;fontSize=17;labelBackgroundColor=#FFFFFF;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=1;" edge="1" parent="1" source="web_node" target="app_node">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="m2" edge="1" parent="1" source="ui" style="html=1;" target="ctrl" value="2: bookAppointment()">
+        <mxCell id="app_db" value="SQL qua TLS" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=0;strokeColor=#000000;strokeWidth=2;endArrow=none;fontColor=#000000;fontFamily=Arial;fontSize=17;labelBackgroundColor=#FFFFFF;exitX=0.27;exitY=1;exitDx=0;exitDy=0;exitPerimeter=1;entryX=0.67;entryY=0;entryDx=0;entryDy=0;entryPerimeter=1;" edge="1" parent="1" source="app_node" target="db_node">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="625" y="1038" />
+              <mxPoint x="490" y="1038" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="db_backup" value="Sao lưu mã hóa (định kỳ)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=0;strokeColor=#000000;strokeWidth=2;endArrow=none;fontColor=#000000;fontFamily=Arial;fontSize=17;labelBackgroundColor=#FFFFFF;exitX=1;exitY=0.52;exitDx=0;exitDy=0;exitPerimeter=1;entryX=0;entryY=0.52;entryDx=0;entryDy=0;entryPerimeter=1;dashed=1;dashPattern=8 4;" edge="1" parent="1" source="db_node" target="backup_node">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="m3" edge="1" parent="1" source="ctrl" style="html=1;" target="svc" value="3: validateAndBook()">
+        <mxCell id="app_sms" value="HTTPS API" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=0;strokeColor=#000000;strokeWidth=2;endArrow=none;fontColor=#000000;fontFamily=Arial;fontSize=17;labelBackgroundColor=#FFFFFF;exitX=1;exitY=0.36;exitDx=0;exitDy=0;exitPerimeter=1;entryX=0;entryY=0.44;entryDx=0;entryDy=0;entryPerimeter=1;" edge="1" parent="1" source="app_node" target="sms_node">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="m4" edge="1" parent="1" source="svc" style="html=1;" target="slot" value="3.1: isAvailable()">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="app_payment" value="HTTPS API" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=0;strokeColor=#000000;strokeWidth=2;endArrow=none;fontColor=#000000;fontFamily=Arial;fontSize=17;labelBackgroundColor=#FFFFFF;exitX=1;exitY=0.82;exitDx=0;exitDy=0;exitPerimeter=1;entryX=0;entryY=0.44;entryDx=0;entryDy=0;entryPerimeter=1;" edge="1" parent="1" source="app_node" target="payment_node">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1214" y="929" />
+            </Array>
+          </mxGeometry>
         </mxCell>
-        <mxCell id="m5" edge="1" parent="1" source="svc" style="html=1;" target="app" value="3.2: create()">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="m6" edge="1" parent="1" source="svc" style="html=1;" target="slot" value="3.3: markBooked()">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="bottom_note" value="Phân vùng trách nhiệm: client → web proxy → ứng dụng → CSDL; dịch vụ ngoài qua HTTPS; sao lưu tách biệt." style="rounded=0;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=none;fontColor=#000000;fontFamily=Arial;fontSize=16;align=center;verticalAlign=middle;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry x="60" y="1265" width="1680" height="32" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
