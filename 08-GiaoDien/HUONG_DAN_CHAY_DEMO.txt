@@ -1,0 +1,48 @@
+HƯỚNG DẪN DEMO – ĐỒ ÁN 6: PHÒNG KHÁM ĐA KHOA
+================================================
+
+1. CHẠY WEB
+   - Mở thư mục DAPTTKHDT-main bằng VS Code.
+   - Cài extension Live Server nếu chưa có.
+   - Nhấp chuột phải index.html ở thư mục gốc, chọn Open with Live Server.
+   - Hoặc dùng lệnh: python -m http.server 5500 (từ thư mục gốc), truy cập http://localhost:5500/.
+   - Nên dùng localhost, không mở bằng file:// để tránh khác biệt trình duyệt.
+
+2. TÀI KHOẢN MẪU (mật khẩu chung: 123456)
+   bn / user1  : Bệnh nhân
+   lt / user2  : Lễ tân
+   bs / user3  : Bác sĩ
+   ktv / user4 : Kỹ thuật viên xét nghiệm
+   tn / user5  : Thu ngân
+   ql / user6  : Quản lý
+   Mỗi lần đổi vai trò, chọn Đăng xuất rồi đăng nhập tài khoản khác.
+
+3. QUY TRÌNH TEST ĐỦ 8 GIAO DIỆN
+   A. Đăng nhập bằng bn: đặt lịch mới -> xem lịch / đổi / hủy.
+   B. Đăng nhập bằng lt: xác nhận lịch -> Check-in lịch có ngày HÔM NAY.
+      Có sẵn LH001 (ngày hôm nay) để kiểm thử nhanh.
+   C. Đăng nhập bằng bs: mở Danh sách chờ -> Bắt đầu khám.
+      Ghi triệu chứng/chẩn đoán -> có thể chỉ định xét nghiệm -> đăng xuất.
+   D. Đăng nhập bằng ktv: cập nhật chỉ định qua 3 trạng thái:
+      Đã chỉ định -> Đã lấy mẫu -> Đang thực hiện -> nhập kết quả -> Có kết quả.
+   E. Đăng nhập lại bằng bs: xem kết quả, đánh dấu đã xem.
+      Kê đơn nếu cần (không cho chọn thuốc thuộc nhóm dị ứng mẫu).
+      Quay lại trang Khám bệnh -> Hoàn tất khám.
+   F. Đăng nhập bằng tn: chọn lượt khám -> thanh toán -> in phiếu thu mẫu.
+   G. Đăng nhập bằng ql: xem tài khoản, phân quyền, nhật ký, SMS và báo cáo.
+
+4. GIỚI HẠN CẦN TRÌNH BÀY VỚI GIẢNG VIÊN
+   - Demo tĩnh dùng HTML/CSS/JS và localStorage.
+   - Không có máy chủ API, cơ sở dữ liệu SQL hay bảo mật RBAC thực tế.
+   - Mật khẩu dùng chung cố định và kiểm tra trên trình duyệt, KHÔNG AN TOÀN.
+   - Không có gửi SMS hoặc thanh toán qua cổng thật; chỉ mô phỏng.
+   - Chỉ có một bệnh nhân mẫu (BN-0001), không xử lý nhiều bệnh nhân thực.
+   - Không được sử dụng dữ liệu sức khỏe thực tế với bản demo.
+   - Chưa có khóa đồng thời bảo đảm khi nhiều thiết bị cùng đặt lịch.
+   - Nhấn 'Khôi phục dữ liệu demo' ở trang đăng nhập để reset khi test.
+
+5. TỆP ĐÃ CHỈNH SỬA
+   GD01–GD08_*.html : 8 màn hình
+   app.js           : logic dùng chung, trạng thái và quyền demo
+   style.css        : giao diện thống nhất, responsive, in phiếu thu
+   Wireframe_8ManHinh.drawio : giữ nguyên file gốc

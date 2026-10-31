@@ -1,33 +1,91 @@
-const $=id=>document.getElementById(id);
-const ROLES={all:{n:'Demo – xem tất cả',s:[1,2,3,4,5,6,7,8]},bn:{n:'Bệnh nhân',s:[2,3]},lt:{n:'Lễ tân',s:[2,3,4]},bs:{n:'Bác sĩ',s:[4,5,6]},ktv:{n:'KTV xét nghiệm',s:[5]},tn:{n:'Thu ngân',s:[7]},ql:{n:'Quản lý phòng khám',s:[8]}};
-const NAMES=['','Đăng nhập','Đặt lịch','Lịch hẹn của tôi','Danh sách chờ','Khám và bệnh án','Kê đơn thuốc','Thanh toán','Quản trị'];
-const FILES=['','GD01_DangNhap','GD02_DatLich','GD03_LichHenCuaToi','GD04_DanhSachChoKham','GD05_KhamBenh','GD06_KeDonThuoc','GD07_ThanhToanHoaDon','GD08_QuanTriPhanQuyen'].map(f=>f&&f+'.html');
-const IC=['','🔐','📅','🗂️','⏳','🩺','💊','💳','⚙️'];
-const SUB=['','Truy cập hệ thống theo vai trò được phân quyền.','Chọn bác sĩ và khung giờ còn trống, hệ thống giữ chỗ và gửi SMS xác nhận.','Theo dõi, xác nhận, đổi hoặc hủy lịch hẹn; check-in khi bệnh nhân đến.','Bệnh nhân đã check-in, sắp theo thứ tự đến.','Ghi triệu chứng, chẩn đoán và chỉ định xét nghiệm song song.','Kê đơn có kiểm tra danh mục thuốc và cảnh báo dị ứng.','Tổng hợp chi phí khám, xét nghiệm, thuốc và thanh toán qua cổng.','Tài khoản, phân quyền, lịch bác sĩ, nhật ký truy cập và báo cáo.'];
-const DOC={'Nội tổng quát':['BS. Trần Minh Khoa','BS. Lê Thu Hà'],'Tim mạch':['BS. Phạm Quốc Bảo'],'Nhi':['BS. Nguyễn Lan Anh']};
-const T=['08:00','08:30','09:00','09:30','10:00','10:30'];
-const MED=[['Paracetamol 500mg',2000,''],['Amoxicillin 500mg',5000,'Penicillin'],['Loratadin 10mg',3000,''],['Omeprazol 20mg',4000,''],['Cefaclor 250mg (ngừng cung cấp)',6000,'x']];
-const LAB=[['Xét nghiệm máu',120000],['Siêu âm',200000],['X-quang',180000]];
-const LST=['Đã chỉ định','Đã lấy mẫu','Đang thực hiện','Có kết quả','Bác sĩ đã xem'];
-const PT={name:'Nguyễn Văn An',id:'BN-0001',dob:'12/05/1995',allergy:'Penicillin'};
-const d1=new Date(Date.now()+864e5).toISOString().slice(0,10);
-let s=null;try{s=JSON.parse(localStorage.getItem('pk'))}catch(e){}
-function save(){try{localStorage.setItem('pk',JSON.stringify(s))}catch(e){}}
-const k=a=>a.doc+a.date+a.time,fmt=n=>n.toLocaleString('vi-VN')+' đ',kt=()=>['all','ktv'].includes(s.role);
-const opts=(l,v)=>l.map(x=>`<option ${x==v?'selected':''}>${x}</option>`).join('');
-function addAp(doc,spec,date,time,reason,st){const a={id:'LH'+(++s.n),doc,spec,date,time,reason,st};s.ap.push(a);s.taken[k(a)]=1;return a}
-if(!s){s={role:null,b:{spec:'Nội tổng quát',doc:'BS. Trần Minh Khoa',date:d1,slot:'',reason:'',re:null},taken:{},ap:[],q:[],cur:null,labs:[],sym:'',dx:'',locked:false,rx:[],rxOk:false,warn:null,pm:'Tiền mặt',fail:false,pst:'',paid:false,logs:[],tab:'tk',flt:'Tất cả',raced:false,n:0,ver:[],sms:[],smsFail:false,fu:'',cash:'',msg:'',US:Object.keys(ROLES).slice(1).map((r,i)=>({u:'user'+(i+1),r,lock:false}))};
- addAp('BS. Trần Minh Khoa','Nội tổng quát',d1,'08:30','Đau đầu kéo dài','Đã đặt');save()}
-const bk=(d,dt,t)=>s.taken[d+dt+t]||(d.length+dt.charCodeAt(9)+t.charCodeAt(1))%5==0;
-function log(a,o){s.logs.unshift({t:new Date().toLocaleTimeString('vi-VN'),r:s.role?ROLES[s.role].n:'—',a,o})}
-function toast(t){const e=$('toast');e.textContent=t;e.style.display='block';clearTimeout(toast.h);toast.h=setTimeout(()=>e.style.display='none',2800)}
-function nav(n,msg){s.msg=msg||'';save();location.href=FILES[n]}
-function promote(){const w=s.ap.find(a=>a.st=='Danh sách chờ'&&!s.taken[k(a)]);if(w){w.st='Chờ xác nhận';s.taken[k(w)]=1;save();toast('Có chỗ trống: lịch trong danh sách chờ chuyển sang Chờ xác nhận')}}
-function lines(){const a=s.ap.find(x=>x.id==s.cur),L=a?[['Phí khám',150000]]:[];s.labs.filter(l=>!l.x).forEach(l=>L.push([l.n,l.p]));s.rx.forEach(r=>L.push([MED[r.i][0]+' × '+r.q,MED[r.i][1]*r.q]));return L}
-function stp(){const dn=[s.ap.some(x=>x.st!='Đã hủy'),s.q.length>0,s.locked,s.rxOk,s.paid],cu=dn.indexOf(false);return '<div class="stp">'+['Đặt lịch','Check-in','Khám bệnh','Kê đơn','Thanh toán'].map((t,i)=>`<div data-n="${i+1}" class="${dn[i]?'ok':i==cu?'cu':''}">${t}</div>`).join('')+'</div>'}
-let PAGE=1,VIEW=null;
-function layout(n,fn){PAGE=n;VIEW=fn;const al=ROLES[s.role||'all'].s;
- if(n>1&&!s.role)return location.replace(FILES[1]);if(n>1&&!al.includes(n))return location.replace(FILES[al[0]]);
- document.body.innerHTML='<header><b>🏥 Phòng khám đa khoa</b><small>Đặt lịch khám và quản lý hồ sơ bệnh án</small><span class="w">'+(s.role?'Vai trò: '+ROLES[s.role].n:'Chưa đăng nhập')+'</span>'+(s.role?'<button onclick="s.role=null;nav(1)">Đăng xuất</button>':'')+'</header><nav>'+(s.role?[1,...al.filter(x=>x!=1)]:[1]).map(i=>`<a class="${i==n?'on':''}" href="${FILES[i]}"><span>${IC[i]}</span>${i}. ${NAMES[i]}</a>`).join('')+'</nav><main id="m"></main><div id="toast"></div>';
- render();if(s.msg){toast(s.msg);s.msg='';save()}}
-function render(){const h=VIEW();$('m').innerHTML='<div class="crumb">Trang chủ / '+NAMES[PAGE]+'</div>'+h.replace('</h2>','</h2><p class="sub">'+SUB[PAGE]+'</p>'+(PAGE>1&&PAGE<8?stp():'')+(PAGE==8?kpi():''))}
+/* PHÒNG KHÁM ĐA KHOA – LOGIC TRÌNH DIỄN GIAO DIỆN
+   Dữ liệu minh họa lưu trong localStorage, không có backend hay xác thực an toàn.
+*/
+'use strict';
+const $ = id => document.getElementById(id);
+const STORE = 'clinic_demo_v2';
+const ROLES = {
+  bn: {name:'Bệnh nhân', pages:[2,3]},
+  lt: {name:'Lễ tân', pages:[2,3,4]},
+  bs: {name:'Bác sĩ', pages:[4,5,6]},
+  ktv:{name:'Kỹ thuật viên xét nghiệm',pages:[5]},
+  tn: {name:'Thu ngân',pages:[7]},
+  ql: {name:'Quản lý phòng khám',pages:[8]}
+};
+const PAGE_NAMES = ['','Đăng nhập','Đặt lịch khám','Lịch hẹn','Danh sách chờ khám','Khám bệnh và xét nghiệm','Kê đơn thuốc','Thanh toán và hóa đơn','Quản trị và phân quyền'];
+const FILES = ['','GD01_DangNhap.html','GD02_DatLich.html','GD03_LichHenCuaToi.html','GD04_DanhSachChoKham.html','GD05_KhamBenh.html','GD06_KeDonThuoc.html','GD07_ThanhToanHoaDon.html','GD08_QuanTriPhanQuyen.html'];
+const ICONS = ['','🔐','📅','📋','⏳','🩺','💊','🧾','⚙️'];
+const DESCS = ['','Đăng nhập để truy cập các chức năng theo vai trò.','Xem lịch bác sĩ và lựa chọn khung giờ trống.','Theo dõi trạng thái, đổi lịch và hủy lịch khám.','Tiếp đón bệnh nhân và chuyển lượt khám đến bác sĩ.','Ghi khám lâm sàng, xử lý chỉ định xét nghiệm.','Kiểm tra danh mục thuốc, dị ứng và phát hành đơn.','Tính chi phí, thanh toán và in phiếu thu mẫu.','Tài khoản, vai trò, nhật ký, thông báo và báo cáo.'];
+const DOCTORS = {'Nội tổng quát':['BS. Trần Minh Khoa','BS. Lê Thu Hà'],'Tim mạch':['BS. Phạm Quốc Bảo'],'Nhi':['BS. Nguyễn Lan Anh']};
+const TIMES = ['08:00','08:30','09:00','09:30','10:00','10:30'];
+const PATIENT = {id:'BN-0001',name:'Nguyễn Văn An',dob:'12/05/1995',allergy:'Penicillin'};
+const LABS = [{id:'M',name:'Xét nghiệm máu',price:120000},{id:'S',name:'Siêu âm',price:200000},{id:'X',name:'X-quang',price:180000}];
+const MEDICINES = [
+  {id:'P',name:'Paracetamol 500mg',price:2000,allergy:'',active:true},
+  {id:'A',name:'Amoxicillin 500mg',price:5000,allergy:'Penicillin',active:true},
+  {id:'L',name:'Loratadin 10mg',price:3000,allergy:'',active:true},
+  {id:'O',name:'Omeprazol 20mg',price:4000,allergy:'',active:true},
+  {id:'C',name:'Cefaclor 250mg',price:6000,allergy:'',active:false}
+];
+const RESERVED = ['Chờ xác nhận','Đã đặt','Đã đến','Hoàn thành'];
+const CAN_CHANGE = ['Chờ xác nhận','Đã đặt'];
+const LAB_STATES = {ORDERED:'Đã chỉ định',SAMPLE_COLLECTED:'Đã lấy mẫu',IN_PROGRESS:'Đang thực hiện',RESULT_AVAILABLE:'Có kết quả',REVIEWED:'Bác sĩ đã xem',CANCELLED:'Đã hủy'};
+const shortDate = d => {const dt=new Date(d.getTime()-d.getTimezoneOffset()*60000);return dt.toISOString().slice(0,10)};
+const TODAY = shortDate(new Date());
+const tomorrow = shortDate(new Date(Date.now()+86400000));
+const money = n => new Intl.NumberFormat('vi-VN',{style:'currency',currency:'VND',maximumFractionDigits:0}).format(Number(n)||0);
+const escapeHTML = value => String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const dateVI = iso => iso ? iso.split('-').reverse().join('/') : '—';
+const stamp = () => new Date().toLocaleString('vi-VN');
+const roleName = role => ROLES[role]?.name || 'Khách';
+function seed() {
+  return {v:2,role:null,user:null,flash:'',
+    accounts:Object.keys(ROLES).map((r,i)=>({u:`user${i+1}`,role:r,locked:false})),
+    draft:{spec:'Nội tổng quát',doctor:DOCTORS['Nội tổng quát'][0],date:tomorrow,time:'',reason:'',editId:null},
+    ap:[{id:'LH001',patientId:PATIENT.id,doctor:DOCTORS['Nội tổng quát'][0],spec:'Nội tổng quát',date:TODAY,time:'08:30',reason:'Khám tổng quát',status:'Đã đặt',createdAt:stamp()}],
+    nextAp:2,visits:{},activeVisit:null,nextLab:1,invoices:[],nextInvoice:1,
+    sms:[],logs:[],tab:'accounts',filter:'Tất cả',paymentMethod:'Tiền mặt',paymentFail:false,cash:'',smsFail:false
+  };
+}
+let s;
+try{s=JSON.parse(localStorage.getItem(STORE))}catch(_){s=null}
+if(!s || s.v!==2){s=seed();save()}
+function save(){try{localStorage.setItem(STORE,JSON.stringify(s))}catch(_){}}
+function account(){return s.accounts.find(a=>a.u===s.user)}
+function validSession(){const a=account();return !!(a&&!a.locked&&ROLES[a.role]&&a.role===s.role)}
+function audit(action,subject=''){s.logs.unshift({at:stamp(),who:s.user||'Chưa đăng nhập',role:roleName(s.role),action,subject});s.logs=s.logs.slice(0,180)}
+function notify(message){const box=$('toast');if(!box)return;box.textContent=message;box.hidden=false;clearTimeout(notify.timer);notify.timer=setTimeout(()=>{box.hidden=true},3400)}
+function go(page,message=''){if(message)s.flash=message;save();window.location.href=FILES[page]}
+function signOut(){audit('Đăng xuất');s.role=null;s.user=null;s.activeVisit=null;go(1,'Đã đăng xuất')}
+function msgBox(text,type='info'){return `<div class="notice ${type}" role="status">${escapeHTML(text)}</div>`}
+function pill(status){const cls=['Đã hủy','Không đến','CANCELLED','Thất bại'].includes(status)?'bad':['Chờ xác nhận','Danh sách chờ','Chờ gửi lại'].includes(status)?'pending':['Hoàn thành','Đã đến','Đã đặt','REVIEWED','Đã gửi','Đã thanh toán'].includes(status)?'good':'neutral';return `<span class="pill ${cls}">${escapeHTML(status)}</span>`}
+function empty(text){return `<div class="empty">${escapeHTML(text)}</div>`}
+function options(arr,sel){return arr.map(x=>`<option value="${escapeHTML(x)}" ${x===sel?'selected':''}>${escapeHTML(x)}</option>`).join('')}
+function isTaken(doctor,date,time,excludeId=null){return s.ap.some(a=>a.id!==excludeId&&a.doctor===doctor&&a.date===date&&a.time===time&&RESERVED.includes(a.status))}
+function canPage(page){return s.role&&ROLES[s.role]?.pages.includes(page)}
+function apById(id){return s.ap.find(x=>x.id===id)}
+function visitFor(id){return s.visits[id]}
+function currentVisit(){return s.activeVisit ? visitFor(s.activeVisit) : null}
+function activeAp(){return s.activeVisit ? apById(s.activeVisit) : null}
+function createVisit(id){if(!s.visits[id])s.visits[id]={id,symptoms:'',diagnosis:'',labs:[],rx:[],rxIssued:false,closed:false,followup:''};return s.visits[id]}
+function sendSMS(id){s.sms.unshift({id,at:stamp(),status:s.smsFail?'Chờ gửi lại':'Đã gửi'})}
+function createAppointment(d,status='Chờ xác nhận') {const id='LH'+String(s.nextAp++).padStart(3,'0');const a={id,patientId:PATIENT.id,doctor:d.doctor,spec:d.spec,date:d.date,time:d.time,reason:d.reason.trim()||'Khám sức khỏe',status,createdAt:stamp()};s.ap.unshift(a);audit('Tạo lịch hẹn',id);return a}
+function promoteWaitlist(doctor,date,time) {if(isTaken(doctor,date,time))return;const a=s.ap.find(x=>x.doctor===doctor&&x.date===date&&x.time===time&&x.status==='Danh sách chờ');if(a){a.status='Chờ xác nhận';sendSMS(a.id);audit('Chuyển danh sách chờ',a.id)}}
+function invoiceFor(id){return s.invoices.find(x=>x.appointmentId===id)}
+function billLines(id){const v=visitFor(id);if(!v)return[];const lines=[{name:'Phí khám',price:150000}];for(const l of v.labs)if(l.status!=='CANCELLED'){const test=LABS.find(x=>x.id===l.type);if(test)lines.push({name:test.name,price:test.price})}for(const r of v.rx){const m=MEDICINES.find(x=>x.id===r.medId);if(m)lines.push({name:`${m.name} × ${r.qty}`,price:m.price*r.qty})}return lines}
+function total(lines){return lines.reduce((sum,x)=>sum+x.price,0)}
+function steps(){const a=s.ap.some(x=>!['Đã hủy','Không đến','Danh sách chờ'].includes(x.status));const q=s.ap.some(x=>x.status==='Đã đến'||x.status==='Hoàn thành');const done=Object.values(s.visits).some(v=>v.closed);const rx=Object.values(s.visits).some(v=>v.rxIssued);const paid=s.invoices.some(x=>x.status==='Đã thanh toán');const data=[a,q,done,rx,paid];return '<div class="steps">'+['Đặt lịch','Tiếp đón','Khám bệnh','Kê đơn','Thanh toán'].map((x,i)=>`<span class="${data[i]?'done':''}">${data[i]?'✓':i+1}. ${x}</span>`).join('')+'</div>'}
+let PAGE=1,VIEW=()=>'';
+function layout(page,view){PAGE=page;VIEW=view;
+  if(page!==1&&!validSession()){s.role=null;s.user=null;save();window.location.replace(FILES[1]);return}
+  if(page!==1&&!canPage(page)){go(ROLES[s.role].pages[0],'Vai trò hiện tại không được truy cập màn hình này');return}
+  const pages=s.role&&validSession()?ROLES[s.role].pages:[];
+  document.body.innerHTML=`<header class="topbar"><div class="brand"><span class="brand-icon" aria-hidden="true">✚</span><div><strong>PHÒNG KHÁM ĐA KHOA</strong><small>Hệ thống đặt lịch và quản lý khám bệnh</small></div></div><div class="session">${s.role?`<span class="user-label">${escapeHTML(s.user)} · ${escapeHTML(roleName(s.role))}</span><button class="btn-ghost" onclick="signOut()">Đăng xuất</button>`:'<span class="user-label">Chưa đăng nhập</span>'}</div></header>
+    <aside class="sidebar"><p class="sidebar-title">ĐIỀU HƯỚNG</p>${(s.role?[...pages]:[1]).map(i=>`<a href="${FILES[i]}" class="${i===page?'active':''}"><span aria-hidden="true">${ICONS[i]}</span>${PAGE_NAMES[i]}</a>`).join('')}</aside>
+    <main class="content"><div class="crumb">PHÒNG KHÁM / ${escapeHTML(PAGE_NAMES[page])}</div><div id="main"></div><footer class="footnote">Hệ thống quản lý phòng khám đa khoa · Đặt lịch, khám bệnh và thanh toán</footer></main><div id="toast" role="status" aria-live="polite" hidden></div>`;
+  render();if(s.flash){const msg=s.flash;s.flash='';save();notify(msg)}
+}
+function render(){const elem=$('main');if(!elem)return;let h='';try{h=VIEW()}catch(e){console.error(e);h=msgBox('Không tải được màn hình. Vui lòng tải lại trang.','error')}
+  elem.innerHTML=`<div class="page-title"><div><h1>${escapeHTML(PAGE_NAMES[PAGE])}</h1><p>${escapeHTML(DESCS[PAGE])}</p></div></div>${PAGE>1&&PAGE<8?steps():''}${h}`;
+}
+function resetData(){if(!confirm('Khôi phục dữ liệu mẫu? Tất cả thao tác đã lưu sẽ bị xóa.'))return;localStorage.removeItem(STORE);s=seed();save();go(1,'Đã khôi phục dữ liệu mẫu')}

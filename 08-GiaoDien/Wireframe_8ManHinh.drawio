@@ -1,32 +1,33 @@
+<?xml version='1.0' encoding='utf-8'?>
 <mxfile host="app.diagrams.net">
   <diagram name="Trang-1" id="Gfv1UnYddpeEZBWFJUSW">
-    <mxGraphModel dx="1569" dy="729" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="1600" math="0" shadow="0">
+    <mxGraphModel dx="1569" dy="729" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="1520" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="w1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;" value="1. Đăng nhập&#xa;[Tài khoản] [Mật khẩu]&#xa;[Đăng nhập] [Quên mật khẩu]" vertex="1">
-          <mxGeometry height="160" width="300" x="40" y="40" as="geometry" />
+        <mxCell id="w1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;fillColor=#ffffff;strokeColor=#222222;fontColor=#111111;spacing=18;fontSize=17;" value="01. ĐĂNG NHẬP&#10;Tên tài khoản | Mật khẩu | Hiện/ẩn&#10;[Nút đăng nhập]&#10;Tài khoản demo, khôi phục dữ liệu&#10;Thông báo sai mật khẩu / khóa tài khoản" vertex="1">
+          <mxGeometry height="300" width="550" x="35" y="70" as="geometry" />
         </mxCell>
-        <mxCell id="w2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;" value="2. Đặt lịch&#xa;[Chuyên khoa] [Bác sĩ]&#xa;[Ngày] [Khung giờ]&#xa;[Lý do khám] [Xác nhận]" vertex="1">
-          <mxGeometry height="160" width="300" x="400" y="40" as="geometry" />
+        <mxCell id="w2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;fillColor=#ffffff;strokeColor=#222222;fontColor=#111111;spacing=18;fontSize=17;" value="02. ĐẶT LỊCH KHÁM&#10;Chuyên khoa | Bác sĩ | Ngày&#10;[Khung giờ còn trống / đã kín]&#10;Lý do khám | [Xác nhận đặt lịch]&#10;Đổi lịch và danh sách chờ" vertex="1">
+          <mxGeometry height="300" width="550" x="615" y="70" as="geometry" />
         </mxCell>
-        <mxCell id="w3" parent="1" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;" value="3. Lịch hẹn của tôi&#xa;[Bộ lọc trạng thái]&#xa;[Danh sách lịch]&#xa;[Hủy] [Đổi lịch]" vertex="1">
-          <mxGeometry height="160" width="300" x="760" y="40" as="geometry" />
+        <mxCell id="w3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;fillColor=#ffffff;strokeColor=#222222;fontColor=#111111;spacing=18;fontSize=17;" value="03. LỊCH HẸN&#10;[Lọc theo trạng thái]&#10;Bảng mã lịch | Bác sĩ | Ngày / Giờ&#10;[Xác nhận / Check-in] (Lễ tân)&#10;[Đổi / Hủy] | Hồ sơ bệnh nhân (chỉ BN)" vertex="1">
+          <mxGeometry height="300" width="550" x="35" y="420" as="geometry" />
         </mxCell>
-        <mxCell id="w4" parent="1" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;" value="4. Danh sách chờ bác sĩ&#xa;[Số thứ tự] [Bệnh nhân] [Giờ đến]&#xa;[Bắt đầu khám]" vertex="1">
-          <mxGeometry height="160" width="300" x="1120" y="40" as="geometry" />
+        <mxCell id="w4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;fillColor=#ffffff;strokeColor=#222222;fontColor=#111111;spacing=18;fontSize=17;" value="04. DANH SÁCH CHỜ KHÁM&#10;STT | Bệnh nhân | Lịch hẹn&#10;Bác sĩ | Giờ đến&#10;[Bắt đầu / Tiếp tục khám] (Bác sĩ)&#10;Lễ tân chỉ theo dõi danh sách" vertex="1">
+          <mxGeometry height="300" width="550" x="615" y="420" as="geometry" />
         </mxCell>
-        <mxCell id="w5" parent="1" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;" value="5. Khám và bệnh án&#xa;[Thông tin bệnh nhân] [Triệu chứng]&#xa;[Chẩn đoán] [Chỉ định]&#xa;[Hoàn tất]" vertex="1">
-          <mxGeometry height="180" width="300" x="40" y="260" as="geometry" />
+        <mxCell id="w5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;fillColor=#ffffff;strokeColor=#222222;fontColor=#111111;spacing=18;fontSize=17;" value="05. KHÁM BỆNH VÀ XÉT NGHIỆM&#10;Thông tin bệnh nhân | Cảnh báo dị ứng&#10;[Triệu chứng] [Chẩn đoán]&#10;[Chỉ định] [Trạng thái xét nghiệm]&#10;KTV nhập kết quả | BS xem kết quả" vertex="1">
+          <mxGeometry height="300" width="550" x="35" y="770" as="geometry" />
         </mxCell>
-        <mxCell id="w6" parent="1" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;" value="6. Kê đơn thuốc&#xa;[Tìm thuốc] [Liều dùng]&#xa;[Số lượng] [Cảnh báo dị ứng]&#xa;[Phát hành đơn]" vertex="1">
-          <mxGeometry height="180" width="300" x="400" y="260" as="geometry" />
+        <mxCell id="w6" parent="1" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;fillColor=#ffffff;strokeColor=#222222;fontColor=#111111;spacing=18;fontSize=17;" value="06. KÊ ĐƠN THUỐC&#10;Danh mục thuốc | Liều dùng | Số lượng&#10;[Thêm vào đơn] | [Xóa thuốc]&#10;Cảnh báo dị ứng và thuốc ngừng bán&#10;[Phát hành đơn] [Quay lại khám]" vertex="1">
+          <mxGeometry height="300" width="550" x="615" y="770" as="geometry" />
         </mxCell>
-        <mxCell id="w7" parent="1" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;" value="7. Thanh toán / hóa đơn&#xa;[Dòng chi phí] [Tổng tiền]&#xa;[Phương thức] [Xác nhận]&#xa;[In hóa đơn]" vertex="1">
-          <mxGeometry height="180" width="300" x="760" y="260" as="geometry" />
+        <mxCell id="w7" parent="1" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;fillColor=#ffffff;strokeColor=#222222;fontColor=#111111;spacing=18;fontSize=17;" value="07. THANH TOÁN VÀ HÓA ĐƠN&#10;Chọn lượt khám hoàn thành&#10;Bảng khoản mục | Tổng tiền&#10;Phương thức | Số tiền thu (tiền mặt)&#10;[Xác nhận thanh toán] [In phiếu thu]" vertex="1">
+          <mxGeometry height="300" width="550" x="35" y="1120" as="geometry" />
         </mxCell>
-        <mxCell id="w8" parent="1" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;" value="8. Quản trị&#xa;[Tài khoản] [Vai trò] [Quyền]&#xa;[Lịch bác sĩ] [Nhật ký] [Báo cáo]" vertex="1">
-          <mxGeometry height="180" width="300" x="1120" y="260" as="geometry" />
+        <mxCell id="w8" parent="1" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;fillColor=#ffffff;strokeColor=#222222;fontColor=#111111;spacing=18;fontSize=17;" value="08. QUẢN TRỊ VÀ PHÂN QUYỀN&#10;Thống kê lượt khám | Doanh thu mẫu&#10;[Tài khoản] [Ma trận quyền] [Lịch BS]&#10;[Nhật ký] [SMS/email] [Báo cáo]&#10;Khóa / mở tài khoản | Đổi vai trò" vertex="1">
+          <mxGeometry height="300" width="550" x="615" y="1120" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
